@@ -293,13 +293,12 @@ def find_collision(bit_char_file: str, start_arg: int, to_arg: int, iv_arg: str,
     numrounds = skinny.numrounds
     print(f'total probability for {numrounds} rounds: 2^{skinny.total_log_prob:.1f}')
 
-    start = model_end
+    start = None
     msg_prefix = None
-    import tqdm
-    bar = tqdm.tqdm()
     for index in takewhile(lambda index: index == 1 or iv_arg == 'random', count(1)):
+        assumptions = []
         if iv_arg == 'free':
-            assumptions = []
+            pass
         elif iv_arg == 'zero':
             assumptions = skinny.constrain_lr(np.zeros((32), dtype=np.uint8))
         elif iv_arg == 'random':
@@ -315,9 +314,10 @@ def find_collision(bit_char_file: str, start_arg: int, to_arg: int, iv_arg: str,
             raise RuntimeError('forgot some value in switch/case')
 
         this_start = process_time()
+        start = this_start if start is None else start
         res = s.check(*assumptions)
         end = process_time()
-        bar.set_description(f'[{tid:02d}/{index:04d}]  [{precisedelta(end-this_start)} / {precisedelta(end-start)}]\t{res}')
+        print(f'[{tid:02d}/{index:04d}]  [{precisedelta(end-this_start)} / {precisedelta(end-start)}]\t{res}')
 
         if res != unsat or interrupted:
             break
