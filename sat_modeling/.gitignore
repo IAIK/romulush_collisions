@@ -1,0 +1,8 @@
+ddt.npy
+sbox.npz
+
+*.c
+*.cpp
+*.html
+
+cache/

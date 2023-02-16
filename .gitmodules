@@ -1,0 +1,3 @@
+[submodule "sat_modeling/skinny-c"]
+	path = sat_modeling/skinny-c
+	url = git@github.com:rweather/skinny-c.git

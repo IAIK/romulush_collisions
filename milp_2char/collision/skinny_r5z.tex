@@ -1,0 +1,54 @@
+
+\documentclass{standalone}
+\usepackage{skinny}
+\usepackage{tugcolors}
+\colorlet{diff}{tugblue}
+\colorlet{tau}{tug}
+\colorlet{cost}{tuggreen}
+\newcommand{\U}{\textsf{?}}
+\newcommand{\T}{\textsf{x}}
+\newcommand{\C}[1]{\textsf{\phantom{m}\textsuperscript{\tiny#1}}}
+
+\begin{document}
+%\SKINNY[128-384] with 5 rounds: Dual obj 2.0 ($2^-{4.0}$)
+
+\begin{tikzpicture}
+  \SkinnyInit{$M$}{$T$}{}{}
+
+  \SkinnyRoundTK{\Cell{ss00}{\color{tau}\U}} % state (input)
+                {\FillCell{ss12}\FillCell{ss22}\FillCell{ss33}\Cell{ss00}{\texttt{0}}\Cell{ss01}{\texttt{1}}\Cell{ss02}{\texttt{2}}\Cell{ss03}{\texttt{3}}\Cell{ss10}{\texttt{4}}\Cell{ss11}{\texttt{5}}\Cell{ss12}{\texttt{6}}\Cell{ss13}{\texttt{7}}\Cell{ss20}{\texttt{8}}\Cell{ss21}{\texttt{9}}\Cell{ss22}{\texttt{a}}\Cell{ss23}{\texttt{b}}\Cell{ss30}{\texttt{c}}\Cell{ss31}{\texttt{d}}\Cell{ss32}{\texttt{e}}\Cell{ss33}{\texttt{f}}}{}{} % tk
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss00}{\color{cost}\C{0}}\Cell{ss01}{\color{cost}\C{0}}\Cell{ss02}{\color{cost}\C{0}}\Cell{ss03}{\color{cost}\C{0}}\Cell{ss10}{\color{cost}\C{0}}\Cell{ss11}{\color{cost}\C{0}}\Cell{ss12}{\color{cost}\C{0}}\Cell{ss13}{\color{cost}\C{0}}\Cell{ss20}{\color{cost}\C{0}}\Cell{ss21}{\color{cost}\C{0}}\Cell{ss22}{\color{cost}\C{0}}\Cell{ss23}{\color{cost}\C{0}}\Cell{ss30}{\color{cost}\C{0}}\Cell{ss31}{\color{cost}\C{0}}\Cell{ss32}{\color{cost}\C{0}}\Cell{ss33}{\color{cost}\C{0}}} % state (after subcells)
+                {\FillCell{ss12}\Cell{ss00}{\color{tau}\U}} % state (after addtweakey)
+                {\FillCell{ss13}\Cell{ss00}{\color{tau}\U}} % state (after shiftrows)
+
+  \SkinnyRoundTK{\FillCell{ss23}\Cell{ss00}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}} % state (input)
+                {\FillCell{ss01}\FillCell{ss10}\FillCell{ss32}\Cell{ss00}{\texttt{9}}\Cell{ss01}{\texttt{f}}\Cell{ss02}{\texttt{8}}\Cell{ss03}{\texttt{d}}\Cell{ss10}{\texttt{a}}\Cell{ss11}{\texttt{e}}\Cell{ss12}{\texttt{c}}\Cell{ss13}{\texttt{b}}\Cell{ss20}{\texttt{0}}\Cell{ss21}{\texttt{1}}\Cell{ss22}{\texttt{2}}\Cell{ss23}{\texttt{3}}\Cell{ss30}{\texttt{4}}\Cell{ss31}{\texttt{5}}\Cell{ss32}{\texttt{6}}\Cell{ss33}{\texttt{7}}}{}{} % tk
+                {\FillCell{ss23}\Cell{ss00}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss00}{\color{cost}\C{0}}\Cell{ss01}{\color{cost}\C{0}}\Cell{ss02}{\color{cost}\C{0}}\Cell{ss03}{\color{cost}\C{0}}\Cell{ss10}{\color{cost}\C{0}}\Cell{ss11}{\color{cost}\C{0}}\Cell{ss12}{\color{cost}\C{0}}\Cell{ss13}{\color{cost}\C{0}}\Cell{ss20}{\color{cost}\C{0}}\Cell{ss21}{\color{cost}\C{0}}\Cell{ss22}{\color{cost}\C{0}}\Cell{ss23}{\color{cost}\C{1}}\Cell{ss30}{\color{cost}\C{0}}\Cell{ss31}{\color{cost}\C{0}}\Cell{ss32}{\color{cost}\C{0}}\Cell{ss33}{\color{cost}\C{0}}} % state (after subcells)
+                {\FillCell{ss01}\FillCell{ss10}\FillCell{ss23}\Cell{ss00}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}} % state (after addtweakey)
+                {\FillCell{ss01}\FillCell{ss11}\FillCell{ss21}\Cell{ss00}{\color{tau}\U}\Cell{ss11}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (after shiftrows)
+
+  \SkinnyNewLine{\FillCell{ss11}\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}} % state (input)
+
+  \SkinnyRoundTK{\FillCell{ss11}\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}} % state (input)
+                {\FillCell{ss11}\FillCell{ss21}\FillCell{ss30}\Cell{ss00}{\texttt{1}}\Cell{ss01}{\texttt{7}}\Cell{ss02}{\texttt{0}}\Cell{ss03}{\texttt{5}}\Cell{ss10}{\texttt{2}}\Cell{ss11}{\texttt{6}}\Cell{ss12}{\texttt{4}}\Cell{ss13}{\texttt{3}}\Cell{ss20}{\texttt{9}}\Cell{ss21}{\texttt{f}}\Cell{ss22}{\texttt{8}}\Cell{ss23}{\texttt{d}}\Cell{ss30}{\texttt{a}}\Cell{ss31}{\texttt{e}}\Cell{ss32}{\texttt{c}}\Cell{ss33}{\texttt{b}}}{}{} % tk
+                {\FillCell{ss11}\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss00}{\color{cost}\C{0}}\Cell{ss01}{\color{cost}\C{0}}\Cell{ss02}{\color{cost}\C{0}}\Cell{ss03}{\color{cost}\C{0}}\Cell{ss10}{\color{cost}\C{0}}\Cell{ss11}{\color{cost}\C{1}}\Cell{ss12}{\color{cost}\C{0}}\Cell{ss13}{\color{cost}\C{0}}\Cell{ss20}{\color{cost}\C{0}}\Cell{ss21}{\color{cost}\C{0}}\Cell{ss22}{\color{cost}\C{0}}\Cell{ss23}{\color{cost}\C{0}}\Cell{ss30}{\color{cost}\C{0}}\Cell{ss31}{\color{cost}\C{0}}\Cell{ss32}{\color{cost}\C{0}}\Cell{ss33}{\color{cost}\C{0}}} % state (after subcells)
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}} % state (after addtweakey)
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss11}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (after shiftrows)
+
+  \SkinnyRoundTK{\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss13}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (input)
+                {\FillCell{ss31}\Cell{ss00}{\texttt{f}}\Cell{ss01}{\texttt{b}}\Cell{ss02}{\texttt{9}}\Cell{ss03}{\texttt{e}}\Cell{ss10}{\texttt{8}}\Cell{ss11}{\texttt{c}}\Cell{ss12}{\texttt{a}}\Cell{ss13}{\texttt{d}}\Cell{ss20}{\texttt{1}}\Cell{ss21}{\texttt{7}}\Cell{ss22}{\texttt{0}}\Cell{ss23}{\texttt{5}}\Cell{ss30}{\texttt{2}}\Cell{ss31}{\texttt{6}}\Cell{ss32}{\texttt{4}}\Cell{ss33}{\texttt{3}}}{}{} % tk
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss13}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}\Cell{ss00}{\color{cost}\C{0}}\Cell{ss01}{\color{cost}\C{0}}\Cell{ss02}{\color{cost}\C{0}}\Cell{ss03}{\color{cost}\C{0}}\Cell{ss10}{\color{cost}\C{0}}\Cell{ss11}{\color{cost}\C{0}}\Cell{ss12}{\color{cost}\C{0}}\Cell{ss13}{\color{cost}\C{0}}\Cell{ss20}{\color{cost}\C{0}}\Cell{ss21}{\color{cost}\C{0}}\Cell{ss22}{\color{cost}\C{0}}\Cell{ss23}{\color{cost}\C{0}}\Cell{ss30}{\color{cost}\C{0}}\Cell{ss31}{\color{cost}\C{0}}\Cell{ss32}{\color{cost}\C{0}}\Cell{ss33}{\color{cost}\C{0}}} % state (after subcells)
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss13}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (after addtweakey)
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss11}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss32}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (after shiftrows)
+
+  \SkinnyNewLine{\Cell{ss00}{\color{tau}\U}\Cell{ss01}{\color{tau}\U}\Cell{ss02}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss13}{\color{tau}\U}\Cell{ss20}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss31}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (input)
+
+  \SkinnyRoundTK{\Cell{ss00}{\color{tau}\U}\Cell{ss01}{\color{tau}\U}\Cell{ss02}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss13}{\color{tau}\U}\Cell{ss20}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss31}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (input)
+                {\FillCell{ss20}\FillCell{ss32}\Cell{ss00}{\texttt{7}}\Cell{ss01}{\texttt{3}}\Cell{ss02}{\texttt{1}}\Cell{ss03}{\texttt{6}}\Cell{ss10}{\texttt{0}}\Cell{ss11}{\texttt{4}}\Cell{ss12}{\texttt{2}}\Cell{ss13}{\texttt{5}}\Cell{ss20}{\texttt{f}}\Cell{ss21}{\texttt{b}}\Cell{ss22}{\texttt{9}}\Cell{ss23}{\texttt{e}}\Cell{ss30}{\texttt{8}}\Cell{ss31}{\texttt{c}}\Cell{ss32}{\texttt{a}}\Cell{ss33}{\texttt{d}}}{}{} % tk
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss01}{\color{tau}\U}\Cell{ss02}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss13}{\color{tau}\U}\Cell{ss20}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss31}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}\Cell{ss00}{\color{cost}\C{0}}\Cell{ss01}{\color{cost}\C{0}}\Cell{ss02}{\color{cost}\C{0}}\Cell{ss03}{\color{cost}\C{0}}\Cell{ss10}{\color{cost}\C{0}}\Cell{ss11}{\color{cost}\C{0}}\Cell{ss12}{\color{cost}\C{0}}\Cell{ss13}{\color{cost}\C{0}}\Cell{ss20}{\color{cost}\C{0}}\Cell{ss21}{\color{cost}\C{0}}\Cell{ss22}{\color{cost}\C{0}}\Cell{ss23}{\color{cost}\C{0}}\Cell{ss30}{\color{cost}\C{0}}\Cell{ss31}{\color{cost}\C{0}}\Cell{ss32}{\color{cost}\C{0}}\Cell{ss33}{\color{cost}\C{0}}} % state (after subcells)
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss01}{\color{tau}\U}\Cell{ss02}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss13}{\color{tau}\U}\Cell{ss20}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss31}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (after addtweakey)
+                {\Cell{ss00}{\color{tau}\U}\Cell{ss01}{\color{tau}\U}\Cell{ss02}{\color{tau}\U}\Cell{ss03}{\color{tau}\U}\Cell{ss10}{\color{tau}\U}\Cell{ss11}{\color{tau}\U}\Cell{ss21}{\color{tau}\U}\Cell{ss22}{\color{tau}\U}\Cell{ss23}{\color{tau}\U}\Cell{ss30}{\color{tau}\U}\Cell{ss32}{\color{tau}\U}\Cell{ss33}{\color{tau}\U}} % state (after shiftrows)
+
+  \SkinnyFin    {}
+\end{tikzpicture}
+\end{document}
